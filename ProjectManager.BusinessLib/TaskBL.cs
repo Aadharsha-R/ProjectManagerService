@@ -24,11 +24,11 @@ namespace ProjectManager.BusinessLib
             {
                 db.Tasks.Add(item);
                 db.SaveChanges();
-                if (item.ParentTask != null && !string.IsNullOrEmpty(item.ParentTask))
-                {
-                    ProjectBL obj = new ProjectBL();
-                    obj.UpdateProject(item.ProjectId);
-                }
+                //if (item.ParentTask != null && !string.IsNullOrEmpty(item.ParentTask))
+                //{
+                //    ProjectBL obj = new ProjectBL();
+                //    obj.UpdateProject(item.ProjectId);
+                //}
             }
         }
 

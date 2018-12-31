@@ -123,7 +123,7 @@ namespace ProjectManager.API.Controllers
         {
             ProjectBL obj = new ProjectBL();
             obj.DeleteProject(id);
-            return Ok("Deleted!!!");
+            return Ok("Deleted!!");
         }
 
     }
