@@ -41,6 +41,24 @@ namespace ProjectManager.BusinessLib
             }
         }
 
+        public void UpdateProject(int ProjID)
+        {
+            using (ProjectManagerContext db = new ProjectManagerContext())
+            {
+                var Proj = db.Projects.First(i => i.ProjectId == ProjID);
+                //var Tsk = GetById(item.TaskId);
+                if (Proj != null)
+                {
+                    Proj.TotalTasks += 1;
+                    db.Entry(Proj).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                //db.Entry(Tsk).CurrentValues.SetValues(item);
+                //db.Tasks.AddOrUpdate(item);
+
+            }
+        }
+
         public List<Project> GetAll()
         {
             using (ProjectManagerContext db = new ProjectManagerContext())

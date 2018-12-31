@@ -18,6 +18,8 @@ namespace ProjectManager.Entities
         [Required]
         public string ProjectName { get; set; }
 
+        public int UserId { get; set; }
+
         public int Priority { get; set; }
 
         [Column(TypeName = "Date")]

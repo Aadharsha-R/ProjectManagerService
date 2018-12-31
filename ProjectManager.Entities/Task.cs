@@ -15,7 +15,8 @@ namespace ProjectManager.Entities
         public int TaskId { get; set; }
         public int ParentId { get; set; }
         public int ProjectId { get; set; }
-        
+        public int UserId { get; set; }
+
         [StringLength(20)]
         [Required]
         public string TaskName { get; set; }

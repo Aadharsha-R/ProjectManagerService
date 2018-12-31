@@ -28,6 +28,14 @@ namespace ProjectManager.API.Controllers
             return Ok(obj.GetAll());
         }
 
+        [Route("GetTask")]
+        [HttpGet]
+        public IHttpActionResult GetTask()
+        {
+            TaskBL obj = new TaskBL();
+            return Ok(obj.GetAll());
+        }
+
         [Route("AddProject")]
         [HttpPost]
         public IHttpActionResult AddProject(Project item)
@@ -46,26 +54,58 @@ namespace ProjectManager.API.Controllers
             return Ok("Updated!!!");
         }
 
-        //[Route("AddTask")]
-        //public IHttpActionResult AddTask(Project item)
-        //{
-        //    TaskBL obj = new TaskBL();
-        //    obj.AddTask(item);
-        //    return Ok();
-        //}
+        [Route("AddTask")]
+        [HttpPost]
+        public IHttpActionResult AddTask(Task item)
+        {
+            TaskBL obj = new TaskBL();
+            obj.AddTask(item);
+            return Ok("Task Added!!");
+        }
+
         [Route("UpdateTask")]
         [HttpPut]
-        public IHttpActionResult Edit(Project item)
+        public IHttpActionResult UpdateTask(Task item)
         {
-            ProjectBL obj = new ProjectBL();
-            obj.UpdateProject(item);
+            TaskBL obj = new TaskBL();
+            obj.UpdateTask(item);
             return Ok("Updated!!!");
         }
-        
-       // [HttpGet]
-        public IHttpActionResult Search(int Id)
+
+
+        [Route("AddUser")]
+        [HttpPost]
+        public IHttpActionResult AddUser(User item)
         {
-            ProjectBL obj = new ProjectBL();
+            UserBL obj = new UserBL();
+            obj.AddUser(item);
+            return Ok("User Added!!");
+        }
+
+
+        [Route("UpdateUser")]
+        [HttpPut]
+        public IHttpActionResult UpdateUser(User item)
+        {
+            UserBL obj = new UserBL();
+            obj.UpdateUser(item);
+            return Ok("Updated!!!");
+        }
+
+        [Route("DeleteUser/{id}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteUser(int id)
+        {
+            UserBL obj = new UserBL();
+            obj.DeleteUser(id);
+            return Ok("Deleted!!!");
+        }
+
+        [Route("SearchTask/{id}")]
+        [HttpGet]
+        public IHttpActionResult SearchTask(int Id)
+        {
+            TaskBL obj = new TaskBL();
             return Ok(obj.GetById(Id));
         }
 
