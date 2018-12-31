@@ -109,5 +109,22 @@ namespace ProjectManager.API.Controllers
             return Ok(obj.GetById(Id));
         }
 
+        [Route("Delete")]
+        public IHttpActionResult RemoveTask(int Id)
+        {
+            TaskBL obj = new TaskBL();
+            obj.DeleteTask(Id);
+            return Ok();
+        }
+
+        [Route("DeleteProject/{id}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteProject(int id)
+        {
+            ProjectBL obj = new ProjectBL();
+            obj.DeleteProject(id);
+            return Ok("Deleted!!!");
+        }
+
     }
 }

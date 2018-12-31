@@ -84,5 +84,18 @@ namespace ProjectManager.BusinessLib
             }
 
         }
+
+        public void DeleteProject(int Id)
+        {
+            using (ProjectManagerContext db = new ProjectManagerContext())
+            {
+                var Prj = db.Projects.First(i => i.ProjectId == Id);
+                if (Prj != null)
+                {
+                    db.Entry(Prj).State = System.Data.Entity.EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

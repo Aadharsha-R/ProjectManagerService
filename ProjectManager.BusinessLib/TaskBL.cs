@@ -66,5 +66,28 @@ namespace ProjectManager.BusinessLib
             }
 
         }
+
+        public Task GetByName(string Name)
+        {
+            using (ProjectManagerContext db = new ProjectManagerContext())
+            {
+                return db.Tasks.SingleOrDefault(k => k.TaskName == Name);
+            }
+
+        }
+
+        public void DeleteTask(int Id)
+        {
+            using (ProjectManagerContext db = new ProjectManagerContext())
+            {
+                var Tsk = db.Tasks.First(i => i.TaskId == Id);
+                //var Tsk = GetById(item.TaskId);
+                if (Tsk != null)
+                {
+                    db.Entry(Tsk).State = System.Data.Entity.EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
